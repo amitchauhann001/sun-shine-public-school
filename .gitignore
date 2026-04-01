@@ -5,6 +5,7 @@ build/
 .env
 
 # Vite
+.vite/
 src/index.css
 src/App.css
 
