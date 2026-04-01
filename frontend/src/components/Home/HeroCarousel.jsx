@@ -4,13 +4,15 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import classes from './HeroCarousel.module.scss';
 import { useGetSharedCarouselsQuery } from '../../store/slices/publicApiSlice';
 
+const base = import.meta.env.BASE_URL;
+
 const DEFAULT_IMAGES = [
-  { url: '/images/banner1.jpg', title: 'Excellence in Education', subtitle: 'Nurturing young minds at Sun Shine Public School' },
-  { url: '/images/banner2.jpg', title: 'Modern Facilities', subtitle: 'Providing the best environment for learning' },
-  { url: '/images/banner3.jpg', title: 'Holistic Development', subtitle: 'Focusing on academics, sports, and arts' },
-  { url: '/images/banner4.jpg', title: 'Bright Futures', subtitle: 'Empowering students for a better tomorrow' },
-  { url: '/images/banner5.jpg', title: 'Dynamic Learning', subtitle: 'Interactive and engaging classroom experiences' },
-  { url: '/images/banner6.jpg', title: 'Sun Shine Public School', subtitle: 'Anand Vihar, Ghansali, Uttarakhand' }
+  { url: `${base}images/banner1.jpg`, title: 'Excellence in Education', subtitle: 'Nurturing young minds at Sun Shine Public School' },
+  { url: `${base}images/banner2.jpg`, title: 'Modern Facilities', subtitle: 'Providing the best environment for learning' },
+  { url: `${base}images/banner3.jpg`, title: 'Holistic Development', subtitle: 'Focusing on academics, sports, and arts' },
+  { url: `${base}images/banner4.jpg`, title: 'Bright Futures', subtitle: 'Empowering students for a better tomorrow' },
+  { url: `${base}images/banner5.jpg`, title: 'Dynamic Learning', subtitle: 'Interactive and engaging classroom experiences' },
+  { url: `${base}images/banner6.jpg`, title: 'Sun Shine Public School', subtitle: 'Anand Vihar, Ghansali, Uttarakhand' }
 ];
 
 const HeroCarousel = () => {

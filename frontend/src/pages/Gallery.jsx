@@ -1,20 +1,21 @@
 import { motion } from 'framer-motion';
 
 const Gallery = () => {
+  const base = import.meta.env.BASE_URL;
   // Real school photos copied from the local source
   const photos = [
-    { url: '/images/gallery/img1.jpg', title: 'School Activities' },
-    { url: '/images/gallery/img2.jpg', title: 'Classroom Session' },
-    { url: '/images/gallery/img3.jpg', title: 'Student Projects' },
-    { url: '/images/gallery/img4.jpg', title: 'Sports Meet' },
-    { url: '/images/gallery/img5.jpg', title: 'Annual Day' },
-    { url: '/images/gallery/img6.jpg', title: 'Science Lab' },
-    { url: '/images/gallery/img7.jpg', title: 'Cultural Events' },
-    { url: '/images/gallery/img8.jpg', title: 'Playground Fun' },
-    { url: '/images/gallery/img9.jpg', title: 'Award Ceremony' },
-    { url: '/images/gallery/img10.jpg', title: 'School Library' },
-    { url: '/images/gallery/img11.jpg', title: 'Modern Infrastructure' },
-    { url: '/images/gallery/img12.jpg', title: 'Faculty Meet' },
+    { url: `${base}images/gallery/img1.jpg`, title: 'School Activities' },
+    { url: `${base}images/gallery/img2.jpg`, title: 'Classroom Session' },
+    { url: `${base}images/gallery/img3.jpg`, title: 'Student Projects' },
+    { url: `${base}images/gallery/img4.jpg`, title: 'Sports Meet' },
+    { url: `${base}images/gallery/img5.jpg`, title: 'Annual Day' },
+    { url: `${base}images/gallery/img6.jpg`, title: 'Science Lab' },
+    { url: `${base}images/gallery/img7.jpg`, title: 'Cultural Events' },
+    { url: `${base}images/gallery/img8.jpg`, title: 'Playground Fun' },
+    { url: `${base}images/gallery/img9.jpg`, title: 'Award Ceremony' },
+    { url: `${base}images/gallery/img10.jpg`, title: 'School Library' },
+    { url: `${base}images/gallery/img11.jpg`, title: 'Modern Infrastructure' },
+    { url: `${base}images/gallery/img12.jpg`, title: 'Faculty Meet' },
   ];
 
   const containerVariants = {
