@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { FaGraduationCap, FaCalendarAlt, FaPhoneAlt, FaFileUpload } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaGraduationCap, FaCalendarAlt, FaPhoneAlt, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import classes from './Admissions.module.scss';
@@ -15,13 +15,21 @@ const Admissions = () => {
     message: ''
   });
   const [photo, setPhoto] = useState(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState('idle'); // idle | sending | success | error
 
   const { studentName, parentName, phone, email, studentClass, message } = formData;
 
   const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-  
+
   const onFileChange = (e) => setPhoto(e.target.files[0]);
+
+  // Auto-hide success/error message after 8 seconds
+  useEffect(() => {
+    if (submitStatus === 'success' || submitStatus === 'error') {
+      const timer = setTimeout(() => setSubmitStatus('idle'), 8000);
+      return () => clearTimeout(timer);
+    }
+  }, [submitStatus]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -29,7 +37,7 @@ const Admissions = () => {
       toast.error('Please fill all required fields');
       return;
     }
-    setIsSubmitting(true);
+    setSubmitStatus('sending');
 
     const data = new FormData();
     data.append('studentName', studentName);
@@ -44,13 +52,15 @@ const Admissions = () => {
       await axios.post('/api/admissions', data, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
-      toast.success('Message Sent Successfully');
+      setSubmitStatus('success');
       setFormData({ studentName: '', parentName: '', phone: '', email: '', studentClass: '', message: '' });
       setPhoto(null);
+      // Reset the file input visually
+      const fileInput = document.querySelector('input[type="file"]');
+      if (fileInput) fileInput.value = '';
     } catch (err) {
-      toast.error(err?.response?.data?.message || 'Failed to Send Message');
-    } finally {
-      setIsSubmitting(false);
+      console.error('Admission form submission failed:', err);
+      setSubmitStatus('error');
     }
   };
 
@@ -59,6 +69,17 @@ const Admissions = () => {
     'Class 1', 'Class 2', 'Class 3', 'Class 4', 'Class 5',
     'Class 6', 'Class 7', 'Class 8', 'Class 9', 'Class 10'
   ];
+
+  const getButtonContent = () => {
+    switch (submitStatus) {
+      case 'sending':
+        return <><div className="spinner"></div> Submitting...</>;
+      case 'success':
+        return <><FaCheckCircle style={{ marginRight: '0.5rem' }} /> Submitted ✓</>;
+      default:
+        return 'Submit Application';
+    }
+  };
 
   return (
     <div className={classes.admissionsPage}>
@@ -133,7 +154,7 @@ const Admissions = () => {
 
           <form onSubmit={submitHandler}>
             <div className={classes.formGroup}>
-              <label>Student Full Name</label>
+              <label>Student Full Name *</label>
               <input
                 type="text"
                 name="studentName"
@@ -144,7 +165,7 @@ const Admissions = () => {
               />
             </div>
             <div className={classes.formGroup}>
-              <label>Parent/Guardian Name</label>
+              <label>Parent/Guardian Name *</label>
               <input
                 type="text"
                 name="parentName"
@@ -155,7 +176,7 @@ const Admissions = () => {
               />
             </div>
             <div className={classes.formGroup}>
-              <label>Phone Number</label>
+              <label>Phone Number *</label>
               <input
                 type="tel"
                 name="phone"
@@ -166,7 +187,7 @@ const Admissions = () => {
               />
             </div>
             <div className={classes.formGroup}>
-              <label>Email Address</label>
+              <label>Email Address *</label>
               <input
                 type="email"
                 name="email"
@@ -177,7 +198,7 @@ const Admissions = () => {
               />
             </div>
             <div className={classes.formGroup}>
-              <label>Class Applying For</label>
+              <label>Class Applying For *</label>
               <select
                 name="studentClass"
                 value={studentClass}
@@ -210,19 +231,48 @@ const Admissions = () => {
             </div>
             <button
               type="submit"
-              className={`btn btn-primary ${classes.submitBtn}`}
-              disabled={isSubmitting}
+              className={`btn btn-primary ${classes.submitBtn} ${submitStatus === 'success' ? classes.btnSuccess : ''}`}
+              disabled={submitStatus === 'sending' || submitStatus === 'success'}
               style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             >
-              {isSubmitting ? (
-                <>
-                  <div className="spinner"></div> Submitting...
-                </>
-              ) : (
-                'Submit Application'
-              )}
+              {getButtonContent()}
             </button>
           </form>
+
+          {/* Inline Success / Error Message */}
+          <AnimatePresence>
+            {submitStatus === 'success' && (
+              <motion.div
+                className={`${classes.statusMessage} ${classes.successMessage}`}
+                initial={{ opacity: 0, y: -10, height: 0 }}
+                animate={{ opacity: 1, y: 0, height: 'auto' }}
+                exit={{ opacity: 0, y: -10, height: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                <FaCheckCircle className={classes.statusIcon} />
+                <div>
+                  <strong>✅ Thank You!</strong><br />
+                  Your admission enquiry has been submitted successfully.<br />
+                  Our team will contact you soon.
+                </div>
+              </motion.div>
+            )}
+            {submitStatus === 'error' && (
+              <motion.div
+                className={`${classes.statusMessage} ${classes.errorMessage}`}
+                initial={{ opacity: 0, y: -10, height: 0 }}
+                animate={{ opacity: 1, y: 0, height: 'auto' }}
+                exit={{ opacity: 0, y: -10, height: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                <FaTimesCircle className={classes.statusIcon} />
+                <div>
+                  <strong>❌ Submission Failed</strong><br />
+                  Please try again later or contact the school directly.
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
       </section>
 

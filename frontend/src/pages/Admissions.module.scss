@@ -161,6 +161,58 @@
     font-size: 1.1rem;
     font-weight: 700;
     border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+
+  .btnSuccess {
+    background-color: var(--success) !important;
+    cursor: default;
+
+    &:hover {
+      background-color: var(--success) !important;
+    }
+  }
+
+  .statusMessage {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    overflow: hidden;
+
+    strong {
+      font-size: 1.1rem;
+    }
+  }
+
+  .statusIcon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .successMessage {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #065f46;
+    border: 1px solid #6ee7b7;
+
+    .statusIcon {
+      color: #059669;
+    }
+  }
+
+  .errorMessage {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+
+    .statusIcon {
+      color: #dc2626;
+    }
   }
 }
 
