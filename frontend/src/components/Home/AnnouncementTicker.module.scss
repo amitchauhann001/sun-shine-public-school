@@ -33,9 +33,12 @@
 
 .tickerContent {
   display: flex;
+  width: max-content;
   white-space: nowrap;
   animation: marquee 30s linear infinite;
   padding-left: 20px;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .tickerItem {
@@ -60,9 +63,11 @@
   color: rgba(255, 255, 255, 0.3);
 }
 
+
+
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 
 @media (max-width: 768px) {

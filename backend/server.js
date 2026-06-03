@@ -4,12 +4,21 @@ import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import connectDB from './config/db.js';
+import fs from 'fs';
 
 // Load env vars
 dotenv.config();
 
 // Connect to database
 connectDB();
+
+// Ensure uploads directory exists
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const uploadDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
 
 const app = express();
 
@@ -19,15 +28,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Static folder for uploads
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static(uploadDir));
 
 import authRoutes from './routes/authRoutes.js';
 import carouselRoutes from './routes/carouselRoutes.js';
 import announcementRoutes from './routes/announcementRoutes.js';
 import achievementRoutes from './routes/achievementRoutes.js';
 import contactRoutes from './routes/contactRoutes.js';
+import admissionRoutes from './routes/admissionRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import cookieParser from 'cookie-parser';
 
@@ -40,6 +48,7 @@ app.use('/api/carousel', carouselRoutes);
 app.use('/api/announcements', announcementRoutes);
 app.use('/api/achievements', achievementRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api/admissions', admissionRoutes);
 
 app.get('/', (req, res) => {
   res.send('School Portal API is running...');

@@ -1,0 +1,94 @@
+.founderSection {
+  background-color: var(--white);
+  padding: 5rem 0;
+  margin: 2rem 0;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.textContent {
+  flex: 1;
+}
+
+.heading {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 60px;
+    height: 4px;
+    background-color: var(--secondary-color);
+    border-radius: 2px;
+  }
+}
+
+.textBody {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+
+  p {
+    margin-bottom: 1.5rem;
+  }
+
+  .signature {
+    font-weight: 700;
+    font-style: italic;
+    color: var(--primary-color);
+    margin-top: 2rem;
+  }
+}
+
+.imageContent {
+  flex: 0.8;
+  display: flex;
+  justify-content: center;
+}
+
+.imageWrapper {
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  border: 4px solid var(--white);
+
+  .image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    max-height: 500px;
+    transition: transform 0.3s ease;
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .imageContent {
+    flex: 1;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .heading {
+    font-size: 2rem;
+  }
+}

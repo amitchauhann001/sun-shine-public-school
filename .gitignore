@@ -25,6 +25,10 @@ Thumbs.db
 frontend/.env
 backend/.env
 
-# Large files / media
 # (Since these were copied from another location, maybe keep them?)
 # public/images/banner*
+
+# Dynamic / Local temp files
+backend/uploads/
+query
+

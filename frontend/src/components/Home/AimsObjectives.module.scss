@@ -1,0 +1,109 @@
+.aimsSection {
+  background-color: var(--white);
+  padding: 5rem 0;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.textContent {
+  flex: 1;
+}
+
+.heading {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  .icon {
+    color: var(--secondary-color);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 60px;
+    height: 4px;
+    background-color: var(--secondary-color);
+    border-radius: 2px;
+  }
+}
+
+.textBody {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+
+  p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+  }
+}
+
+.readMoreBtn {
+  background-color: transparent;
+  color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  margin-top: 1rem;
+
+  &:hover {
+    background-color: var(--secondary-color);
+    color: var(--white);
+  }
+}
+
+.imageContent {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  max-height: 450px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .textContent, .imageContent {
+    flex: 1;
+    width: 100%;
+  }
+  
+  .imageContent {
+    max-width: 600px;
+  }
+}

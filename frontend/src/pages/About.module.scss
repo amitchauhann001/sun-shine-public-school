@@ -1,0 +1,279 @@
+.aboutPage {
+  background-color: var(--white);
+}
+
+// Section 1: Hero Banner
+.heroBanner {
+  position: relative;
+  height: 400px;
+  background-size: cover;
+  background-position: center bottom; /* Shifting focus to lower portion */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 32, 60, 0.7);
+    z-index: 1;
+  }
+
+  .heroContent {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--white);
+    padding: 0 1rem;
+
+    h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    p {
+      font-size: 1.4rem;
+      font-weight: 400;
+      opacity: 0.9;
+    }
+  }
+}
+
+// Section 2: Main Content
+.mainContent {
+  padding: 6rem 0;
+  
+  .textContent {
+    max-width: 900px;
+    margin: 0 auto;
+    
+    p {
+      font-size: 1.15rem;
+      line-height: 1.9;
+      color: var(--text-dark);
+      margin-bottom: 2rem;
+      text-align: justify;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// Section 3: Highlights Grid
+.highlightsSection {
+  background-color: var(--bg-light);
+  padding: 6rem 0;
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+
+  .card {
+    background: var(--white);
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+    }
+
+    .iconBox {
+      width: 70px;
+      height: 70px;
+      background: rgba(13, 71, 161, 0.1);
+      color: var(--primary-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2rem;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--primary-color);
+    }
+
+    p {
+      font-size: 1rem;
+      color: var(--text-light);
+    }
+  }
+}
+
+// Section 4: Image + Text
+.imageTextSection {
+  padding: 8rem 0;
+
+  .container {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+  }
+
+  .imageBox {
+    flex: 1;
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .textBox {
+    flex: 1;
+    h2 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-dark);
+    }
+  }
+}
+
+// Section 5: Stats Counter
+.statsSection {
+  background-color: var(--primary-color);
+  padding: 5rem 0;
+  color: var(--white);
+
+  .statsContainer {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+  }
+
+  .statItem {
+    h3 {
+      font-size: 3.5rem;
+      color: var(--secondary-color);
+      margin-bottom: 0.5rem;
+    }
+    p {
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+// Section 6: Gallery
+.gallerySection {
+  padding: 6rem 0;
+  
+  .galleryGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    
+    .galleryImg {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+      
+      &:hover {
+        transform: scale(1.03);
+      }
+    }
+  }
+}
+
+// Section 7: CTA
+.ctaSection {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #172554 100%);
+  padding: 6rem 0;
+  text-align: center;
+  color: var(--white);
+
+  h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+  }
+
+  p {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ctaBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, #fbbf24 100%);
+    color: var(--white);
+    padding: 1.2rem 3.5rem;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4), 0 0 0 rgba(245, 158, 11, 0);
+    text-decoration: none;
+
+    &:hover {
+      background: linear-gradient(135deg, #d97706 0%, var(--secondary-color) 100%);
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(245, 158, 11, 0.5), 0 0 20px rgba(245, 158, 11, 0.3);
+    }
+
+    &:active {
+      transform: translateY(-2px) scale(0.98);
+      box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4);
+    }
+
+    svg {
+      transition: transform 0.3s ease;
+    }
+
+    &:hover svg {
+      transform: rotate(15deg) scale(1.2);
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .heroBanner .heroContent h1 { font-size: 3rem; }
+  .highlightsSection .grid { grid-template-columns: repeat(2, 1fr); }
+  .imageTextSection .container { flex-direction: column; gap: 3rem; }
+  .gallerySection .galleryGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .heroBanner { height: 300px; }
+  .heroBanner .heroContent h1 { font-size: 2.5rem; }
+  .highlightsSection .grid { grid-template-columns: 1fr; }
+  .statsSection .statsContainer { flex-direction: column; gap: 3rem; }
+  .ctaSection h2 { font-size: 2.2rem; }
+}

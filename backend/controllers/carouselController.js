@@ -5,8 +5,28 @@ import Carousel from '../models/Carousel.js';
 // @route   GET /api/carousel
 // @access  Public
 const getCarousels = asyncHandler(async (req, res) => {
-  const carousels = await Carousel.find({ isActive: true }).sort('order');
-  res.json(carousels);
+  try {
+    const carousels = await Carousel.find({ isActive: true }).sort('order');
+    res.json(carousels);
+  } catch (error) {
+    console.error('Database connection failed, using mock data for carousel');
+    res.json([
+      {
+        _id: 'mock1',
+        title: 'Welcome to Sunshine Public School',
+        imageUrl: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80&w=1920',
+        order: 1,
+        isActive: true
+      },
+      {
+        _id: 'mock2',
+        title: 'Nurturing Young Minds for a Brighter Future',
+        imageUrl: 'https://images.unsplash.com/photo-1523050853061-80e8a4ff147e?auto=format&fit=crop&q=80&w=1920',
+        order: 2,
+        isActive: true
+      }
+    ]);
+  }
 });
 
 // @desc    Get all carousel items (for admin panel)

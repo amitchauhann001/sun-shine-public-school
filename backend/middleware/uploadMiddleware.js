@@ -4,7 +4,8 @@ import multer from 'multer';
 // Storage configuration
 const storage = multer.diskStorage({
   destination(req, file, cb) {
-    cb(null, 'uploads/'); // Store locally in 'uploads' folder
+    const uploadPath = path.resolve('uploads/');
+    cb(null, uploadPath);
   },
   filename(req, file, cb) {
     cb(

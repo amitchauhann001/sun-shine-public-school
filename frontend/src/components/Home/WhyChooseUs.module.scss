@@ -1,0 +1,171 @@
+.whySection {
+  position: relative;
+  padding: 8rem 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--white);
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 32, 60, 0.90);
+  z-index: 1;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.heading {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 600px;
+  margin: 1.5rem auto 0;
+}
+
+.line {
+  width: 70px;
+  height: 4px;
+  background-color: var(--secondary-color);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+/* CARDS GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem 2.5rem; /* Increased top gap for overlapping icons */
+  margin-top: 3rem;
+}
+
+.card {
+  background: var(--primary-color);
+  border-radius: 20px;
+  padding: 4rem 2rem 3rem; /* Extra top padding for circle */
+  text-align: center;
+  color: var(--white);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+  z-index: 1;
+
+  &:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+
+    h3 {
+      margin-bottom: 1rem;
+    }
+
+    p {
+      opacity: 1;
+      max-height: 200px;
+      margin-top: 0.5rem;
+      transform: translateY(0);
+    }
+  }
+
+  h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin: 0;
+    transition: margin 0.3s ease;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+  }
+}
+
+.iconWrapper {
+  width: 90px;
+  height: 90px;
+  background: #ffffff;
+  color: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border: 6px solid var(--white); /* This creates a bit of a gap effect if needed, but the overlapping does most of the work */
+  z-index: 3;
+  transition: transform 0.3s ease;
+}
+
+.featuredCard {
+  background: var(--secondary-color);
+  
+  .iconWrapper {
+    color: var(--secondary-color);
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .whySection {
+    padding: 6rem 0;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 5rem 0;
+  }
+
+  .card {
+    padding: 4rem 1.5rem 2.5rem;
+    
+    h3 {
+      margin-bottom: 1rem;
+    }
+    
+    p {
+      opacity: 1;
+      max-height: 500px;
+      transform: translateY(0);
+    }
+  }
+}

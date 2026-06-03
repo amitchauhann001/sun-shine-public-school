@@ -1,0 +1,209 @@
+.admissionsPage {
+  background-color: var(--bg-light);
+  min-height: 100vh;
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #1e40af 100%);
+  color: var(--white);
+  padding: 6rem 1rem;
+  text-align: center;
+
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+    opacity: 0.9;
+    font-weight: 500;
+  }
+}
+
+.quickInfo {
+  max-width: 1200px;
+  margin: -3rem auto 4rem;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+
+  .infoCard {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+
+    .icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    p {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+  }
+}
+
+.processSection {
+  max-width: 900px;
+  margin: 0 auto 5rem;
+  padding: 0 1rem;
+  text-align: center;
+
+  h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+
+      .number {
+        width: 40px;
+        height: 40px;
+        background: var(--secondary-color);
+        color: var(--white);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.2rem;
+      }
+
+      p {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--text-dark);
+        line-height: 1.4;
+      }
+    }
+  }
+}
+
+.formSection {
+  max-width: 700px;
+  margin: 0 auto 6rem;
+  padding: 0 1rem;
+
+  .formWrapper {
+    background: var(--white);
+    padding: 4rem 3rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+
+    h2 {
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--primary-color);
+      font-size: 2.2rem;
+    }
+  }
+
+  .formGroup {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    label {
+      font-weight: 600;
+      color: var(--text-dark);
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      padding: 1rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: all 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.1);
+      }
+    }
+  }
+
+  .submitBtn {
+    width: 100%;
+    padding: 1.2rem;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 10px;
+  }
+}
+
+.helpSection {
+  text-align: center;
+  padding-bottom: 8rem;
+
+  h3 {
+    font-size: 1.5rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .callBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--white);
+    color: var(--primary-color);
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: var(--primary-color);
+      color: var(--white);
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .hero h1 { font-size: 2.5rem; }
+  .quickInfo { grid-template-columns: repeat(2, 1fr); margin-top: -2rem; }
+  .processSection .steps { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 4rem 1rem; }
+  .quickInfo { grid-template-columns: 1fr; }
+  .processSection .steps { grid-template-columns: 1fr; gap: 2rem; }
+  .formSection .formWrapper { padding: 2.5rem 1.5rem; }
+}

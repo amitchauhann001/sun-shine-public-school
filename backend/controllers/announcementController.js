@@ -5,8 +5,20 @@ import Announcement from '../models/Announcement.js';
 // @route   GET /api/announcements
 // @access  Public
 const getAnnouncements = asyncHandler(async (req, res) => {
-  const announcements = await Announcement.find({ isActive: true }).sort('-priority -createdAt');
-  res.json(announcements);
+  try {
+    const announcements = await Announcement.find({ isActive: true }).sort('-priority -createdAt');
+    res.json(announcements);
+  } catch (error) {
+    console.error('Database connection failed, using mock data for announcements');
+    res.json([
+      {
+        _id: 'mock_ann_1',
+        text: '📢 Admission Open 2026–27 | Apply Now | Limited Seats!',
+        isActive: true,
+        priority: 1
+      }
+    ]);
+  }
 });
 
 // @desc    Get all announcements (for admin panel)

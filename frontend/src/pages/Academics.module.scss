@@ -1,0 +1,337 @@
+.academicsPage {
+  background-color: var(--white);
+}
+
+// Global section structure
+.section {
+  padding: 6rem 0;
+}
+
+.bgLight {
+  background-color: var(--bg-light);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+// Section 1: Hero Banner
+.heroBanner {
+  position: relative;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 32, 60, 0.7);
+    z-index: 1;
+  }
+
+  .heroContent {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--white);
+    padding: 0 1rem;
+
+    h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    p {
+      font-size: 1.4rem;
+      font-weight: 400;
+      opacity: 0.9;
+    }
+  }
+}
+
+// Section 2: Academic Approach
+.introSection {
+  text-align: center;
+  
+  .introText {
+    max-width: 800px;
+    margin: 2rem auto 0;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+  }
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--secondary-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
+  }
+}
+
+// Section 3: Levels Cards
+.levelsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+.levelCard {
+  background: var(--white);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+    border-color: var(--secondary-color);
+  }
+
+  .levelIcon {
+    width: 65px;
+    height: 65px;
+    background: rgba(13, 71, 161, 0.1);
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  p {
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+}
+
+// Section 4: Subjects Grid
+.subjectsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.subjectItem {
+  background: var(--white);
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-5px);
+
+    .subjectIcon {
+      background: rgba(255, 255, 255, 0.2);
+      color: var(--white);
+    }
+    
+    span {
+       color: var(--white);
+    }
+  }
+
+  .subjectIcon {
+    width: 55px;
+    height: 55px;
+    background: rgba(13, 71, 161, 0.05);
+    color: var(--primary-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  span {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    display: block;
+  }
+}
+
+// Section 5: Methodology
+.methodologyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3.5rem;
+}
+
+.methodCard {
+  display: flex;
+  gap: 1.25rem;
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border-left: 5px solid var(--secondary-color);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+
+  .methodIcon {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin-top: 5px;
+  }
+
+  h4 {
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.15rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin: 0;
+  }
+}
+
+// Section 6: Results Stat
+.resultsSection {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 6rem 0;
+
+  .resultsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+
+  .statBox {
+    text-align: center;
+    h3 {
+      font-size: 4rem;
+      color: var(--secondary-color);
+      margin-bottom: 0.5rem;
+      font-weight: 800;
+    }
+    p {
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+// Section 7: CTA
+.ctaSection {
+  background: linear-gradient(135deg, #1e3a8a 0%, #172554 100%);
+  padding: 6rem 0;
+  text-align: center;
+  color: var(--white);
+
+  h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+  }
+
+  .btnGroup {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .primaryBtn, .outlineBtn {
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .primaryBtn {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    
+    &:hover {
+      background-color: #d97706;
+      transform: translateY(-5px);
+    }
+  }
+
+  .outlineBtn {
+    border: 2px solid var(--white);
+    color: var(--white);
+
+    &:hover {
+      background: var(--white);
+      color: var(--primary-color);
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .heroBanner .heroContent h1 { font-size: 3rem; }
+  .subjectsGrid { grid-template-columns: repeat(3, 1fr); }
+  .levelsGrid { grid-template-columns: repeat(2, 1fr); }
+  .methodologyGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .heroBanner { height: 300px; }
+  .heroBanner .heroContent h1 { font-size: 2.5rem; }
+  .subjectsGrid { grid-template-columns: repeat(2, 1fr); }
+  .levelsGrid { grid-template-columns: 1fr; }
+  .resultsGrid { grid-template-columns: 1fr; gap: 4rem; }
+  .methodologyGrid { grid-template-columns: 1fr; }
+  .btnGroup { flex-direction: column; align-items: center; }
+  .ctaSection h2 { font-size: 2rem; }
+}

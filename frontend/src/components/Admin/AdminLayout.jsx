@@ -4,6 +4,7 @@ import { useLogoutMutation } from '../../store/slices/usersApiSlice';
 import { logout } from '../../store/slices/authSlice';
 import classes from './AdminLayout.module.scss';
 import { FaTachometerAlt, FaImages, FaBullhorn, FaTrophy, FaSignOutAlt, FaVideo } from 'react-icons/fa';
+import ScrollToTop from '../Utils/ScrollToTop';
 
 const AdminLayout = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -23,6 +24,7 @@ const AdminLayout = () => {
 
   return (
     <div className={classes.adminLayout}>
+      <ScrollToTop />
       <aside className={classes.sidebar}>
         <div className={classes.sidebarHeader}>
           <h3>Admin Portal</h3>

@@ -1,44 +1,29 @@
-import { useEffect, useState } from 'react';
 import classes from './AnnouncementTicker.module.scss';
-import { FaBullhorn } from 'react-icons/fa';
-import { useGetSharedAnnouncementsQuery } from '../../store/slices/publicApiSlice';
+import { FaGraduationCap } from 'react-icons/fa';
 
 const AnnouncementTicker = () => {
-  const { data: announcements, isLoading } = useGetSharedAnnouncementsQuery();
-
-  if (isLoading || !announcements || announcements.length === 0) {
-    return null;
-  }
+  const tickerText = "🎓 Admission Open 2026–27 | Apply Now | Limited Seats!";
+  
+  // Duplicate it to ensure smooth continuous scrolling
+  const items = Array(6).fill(tickerText); 
 
   return (
     <div className={classes.tickerWrapper}>
       <div className={classes.tickerLabel}>
-        <FaBullhorn /> Announcements
+        <FaGraduationCap /> Admissions
       </div>
       <div className={classes.tickerContainer}>
         <div className={classes.tickerContent}>
-          {announcements.map((item) => (
-            <span key={item._id} className={classes.tickerItem}>
-              {item.linkUrl ? (
-                <a href={item.linkUrl} target="_blank" rel="noopener noreferrer">
-                  {item.text}
-                </a>
-              ) : (
-                item.text
-              )}
+          {items.map((text, idx) => (
+            <span key={idx} className={classes.tickerItem}>
+              {text}
               <span className={classes.separator}>|</span>
             </span>
           ))}
-          {/* Duplicate for seamless scrolling */}
-          {announcements.map((item) => (
-            <span key={`${item._id}-dup`} className={classes.tickerItem}>
-              {item.linkUrl ? (
-                <a href={item.linkUrl} target="_blank" rel="noopener noreferrer">
-                  {item.text}
-                </a>
-              ) : (
-                item.text
-              )}
+          {/* Duplicate set for seamless scrolling */}
+          {items.map((text, idx) => (
+            <span key={`dup-${idx}`} className={classes.tickerItem}>
+              {text}
               <span className={classes.separator}>|</span>
             </span>
           ))}
